@@ -1,0 +1,20 @@
+{% extends 'foodapp/index.html' %}
+{% load staticfiles %}
+{% block childblock %}
+<style>
+.container{
+  background-image: linear-gradient(to bottom right, white,red);
+  margin-top: 30px;
+}
+</style>
+<div class="container">
+  <h1>Welcome to FoodPanda</h1>
+  <h3>Choose your taste with love !!!</h3>
+  <img src='{% static 'images/panda.jpg' %}' height=300px width=300px />
+</div>
+<footer>
+<div class='footer'>
+  <p>&copy; {{request.session.year}} Developed by: Shivam Srivastava</p>
+  <p>Contact information: <a href="mailto:shivam.hbti05@gmail.com">shivam.hbti05@gmail.com</a></p>
+</footer>
+{% endblock %}

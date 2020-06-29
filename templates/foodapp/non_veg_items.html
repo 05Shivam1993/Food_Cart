@@ -1,0 +1,186 @@
+{% extends 'foodapp/index.html' %}
+{% load staticfiles %}
+{% block childblock%}
+{% if request.session.count %}
+<center><h4 id='total-item' style="color:red;font-style:italic">Total Item in Cart : {{request.session.count}}</h4></center>
+{% else %}
+<center><h4 id='total-item' style="color:red;font-style:italic">Total Item in Cart : 0</h4></center>
+{% endif %}
+<center><div class='cart'>
+  <a href="/cart-items"><button class='btn btn-success'>Go to Cart</button><a>
+</div></center>
+<div class="column">
+  <img src="{% static 'images/chickenleg.jpg' %}" alt="paneertikka" style="width:200px;height:120px">
+  <h3 id='chickenleg'>Chicken Leg</h3>
+  <p class="item-price-chickenleg">Rs 400</p>
+  <!-- <p>Some text about the panda..</p> -->
+  <p><button id='chl'>Add to Cart</button></p>
+</div>
+<div class="column">
+  <img src="{% static 'images/biryani.jpg' %}" alt="spicysalad" style="width:200px;height:120px">
+  <h3 id='chickenbiryani'>Chicken Biryani</h3>
+  <p class="item-price-chickenbiryani">Rs 200</p>
+  <!-- <p>Some text about the panda..</p> -->
+  <p><button id='cb'>Add to Cart</button></p>
+</div>
+<div class="column">
+  <img src="{% static 'images/chickengravy.jpg' %}" alt="chaat"  style="width:200px;height:120px">
+  <h3 id='chickengravy'>Chicken Gravy</h3>
+  <p class="item-price-chickengravy">Rs 200</p>
+  <!-- <p>Some text about the panda..</p> -->
+  <p><button id='cg'>Add to Cart</button></p>
+</div>
+<div class="column">
+  <img src="{% static 'images/fish.jpg' %}" alt="paneer"  style="width:200px;height:120px">
+  <h3 id='fishcurry'>Fish Curry</h3>
+  <p class="item-price-fishcurry">Rs 100</p>
+  <!-- <p>Some text about the panda..</p> -->
+  <p><button id='fc'>Add to Cart</button></p>
+</div>
+<div class="column">
+  <img src="{% static 'images/fishfry.jpg' %}" alt="pasta"  style="width:200px;height:120px">
+  <h3 id="fishfry">Fish Fry</h3>
+  <p class="item-price-fishfry">Rs 100</p>
+  <!-- <p>Some text about the panda..</p> -->
+  <p><button id='ff'>Add to Cart</button></p>
+</div>
+<div class="column">
+  <img src="{% static 'images/egg.jpg' %}" alt="pizza"  style="width:200px;height:120px">
+  <h3 id='egg'>Egg Curry</h3>
+  <p class="item-price-egg">Rs 50</p>
+  <!-- <p>Some text about the panda..</p> -->
+  <p><button id='eg'>Add to Cart</button></p>
+</div>
+<div class="column">
+  <img src="{% static 'images/hyderabadichicken.jpg' %}" alt="paneerpakodi"  style="width:200px;height:120px">
+  <h3 id='hydchicken'>Hyd Chicken</h3>
+  <p class="item-price-hydchicken">Rs 400</p>
+  <!-- <h>Some text about the panda..</p> -->
+  <p><button id='hc'>Add to Cart</button></p>
+</div>
+<div class="column">
+  <img src="{% static 'images/chickenmasala.jpg' %}" alt="chowmin"  style="width:200px;height:120px">
+  <h3 id='chickenmasala'>Chicken Masala</h3>
+  <p class="item-price-chickenmasala">Rs 400</p>
+  <!-- <p>Some text about the panda..</p> -->
+  <p><button id='cm'>Add to Cart</button></p>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#cm").click(function(){
+  var item =  $("#chickenmasala").text();
+  var price = $(".item-price-chickenmasala").text();
+  var count = $("#count").text();
+  $.ajax({
+         url: "/order-items",
+         type : "GET",
+         data: jQuery.param({ item: item, price : price}) ,
+         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+         success: function(count){
+         $("#total-item").text("Total Item in cart : "+count);
+  }
+});
+});
+
+$("#hc").click(function(){
+var item =  $("#hydchicken").text();
+var price = $(".item-price-hydchicken").text();
+var count = $("#count").text();
+$.ajax({
+       url: "/order-items",
+       type : "GET",
+       data: jQuery.param({ item: item, price : price}) ,
+       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+       success: function(count){
+       $("#total-item").text("Total Item in cart : "+count);
+}
+});
+});
+$("#chl").click(function(){
+var item =  $("#chickenleg").text();
+var price = $(".item-price-chickenleg").text();
+var count = $("#count").text();
+$.ajax({
+       url: "/order-items",
+       type : "GET",
+       data: jQuery.param({ item: item, price : price}) ,
+       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+       success: function(count){
+       $("#total-item").text("Total Item in cart : "+count);
+}
+});
+});
+$("#cb").click(function(){
+var item =  $("#chickenbiryani").text();
+var price = $(".item-price-chickenbiryani").text();
+var count = $("#count").text();
+$.ajax({
+       url: "/order-items",
+       type : "GET",
+       data: jQuery.param({ item: item, price : price}) ,
+       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+       success: function(count){
+       $("#total-item").text("Total Item in cart : "+count);
+}
+});
+});
+$("#cg").click(function(){
+var item =  $("#chickengravy").text();
+var price = $(".item-price-chickengravy").text();
+var count = $("#count").text();
+$.ajax({
+       url: "/order-items",
+       type : "GET",
+       data: jQuery.param({ item: item, price : price}) ,
+       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+       success: function(count){
+       $("#total-item").text("Total Item in cart : "+count);
+}
+});
+});
+$("#fc").click(function(){
+var item =  $("#fishcurry").text();
+var price = $(".item-price-fishcurry").text();
+var count = $("#count").text();
+$.ajax({
+       url: "/order-items",
+       type : "GET",
+       data: jQuery.param({ item: item, price : price}) ,
+       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+       success: function(count){
+       $("#total-item").text("Total Item in cart : "+count);
+}
+});
+});
+$("#eg").click(function(){
+var item =  $("#egg").text();
+var price = $(".item-price-egg").text();
+var count = $("#count").text();
+$.ajax({
+       url: "/order-items",
+       type : "GET",
+       data: jQuery.param({ item: item, price : price}) ,
+       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+       success: function(count){
+       $("#total-item").text("Total Item in cart : "+count);
+}
+});
+});
+$("#ff").click(function(){
+var item =  $("#fishfry").text();
+var price = $(".item-price-fishfry").text();
+var count = $("#count").text();
+$.ajax({
+       url: "/order-items",
+       type : "GET",
+       data: jQuery.param({ item: item, price : price}) ,
+       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+       success: function(count){
+       $("#total-item").text("Total Item in cart : "+count);
+}
+});
+});
+});
+  </script>
+{% endblock%}

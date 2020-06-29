@@ -1,0 +1,10 @@
+{% extends 'foodapp/index.html' %}
+{% load staticfiles %}
+{% block childblock %}
+<center><h3 id='cancel'>Your order has been cancelled</h3></center>
+<footer>
+<div class='footer'>
+  <p>&copy; {{request.session.year}} Developed by: Shivam Srivastava</p>
+  <p>Contact information: <a href="mailto:shivam.hbti05@gmail.com">shivam.hbti05@gmail.com</a></p>
+</footer>
+{% endblock %}

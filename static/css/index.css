@@ -1,0 +1,99 @@
+.container{
+  text-align: center;
+  color: red;
+  font-style: italic;
+  font-weight: bold;
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+
+  }
+   p {
+    color: white;
+    text-align: center;
+  }
+  #cancel{
+    margin-left: auto;
+    color: red;
+  }
+
+#empty-cart{
+  color: red;
+  text-align: center;
+  font-style: italic;
+}
+  /* body {
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+.pro_details{
+    color: red;
+    text-align: center;
+    font-style: italic;
+  }
+#checkout{
+  margin-left: 44%;
+  margin-bottom: 80px;
+}
+.column {
+  float: left;
+  width: 25%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.column button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+.column button:hover {
+  opacity: 0.7;
+}
+.price {
+  color: grey;
+  font-size: 15px;
+}
+.column {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 200px;
+    /* max-height: 800px; */
+    margin: 10px;
+    text-align: center;
+    /* font-family: arial; */
+}
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color:#23c24d;
+}
+/* ----------------------------------------------- */

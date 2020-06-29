@@ -1,0 +1,185 @@
+{% extends 'foodapp/index.html' %}
+{% load staticfiles %}
+{% block childblock%}
+{% if request.session.count %}
+<center><h4 id='total-item' style="color:red;font-style:italic">Total Item in Cart : {{request.session.count}}</h4></center>
+{% else %}
+<center><h4 id='total-item' style="color:red;font-style:italic">Total Item in Cart : 0</h4></center>
+{% endif %}
+<center><div class='cart'>
+  <a href="/cart-items"><button class='btn btn-success'>Go to Cart</button><a>
+</div></center>
+<div class="column">
+  <img src="{% static 'images/paneertikka.jpg' %}" alt="paneertikka" style="width:200px;height:120px">
+  <h3 id='item-paneertikka'>Paneer Tikka</h3>
+  <p class="item-price-paneertikka">Rs 250</p>
+  <!-- <p>Some text about the panda..</p> -->
+  <p><button id='button-paneertikka'>Add to Cart</button></p>
+</div>
+<div class="column">
+  <img src="{% static 'images/salad.jpg' %}" alt="spicysalad" style="width:200px;height:120px">
+  <h3 id='item-spicychaat'>Spicy Chaat</h3>
+  <p class="item-price-spicychaat">Rs 100</p>
+  <!-- <p>Some text about the panda..</p> -->
+  <p><button id='button-spicychaat'>Add to Cart</button></p>
+</div>
+<div class="column">
+  <img src="{% static 'images/chat.jpg' %}" alt="chaat"  style="width:200px;height:120px">
+  <h3 id='item-chaat'>Chaat</h3>
+  <p class="item-price-chaat">Rs 100</p>
+  <!-- <p>Some text about the panda..</p> -->
+  <p><button id='button-chaat'>Add to Cart</button></p>
+</div>
+<div class="column">
+  <img src="{% static 'images/paneer.jpg' %}" alt="paneer"  style="width:200px;height:120px">
+  <h3 id='item-paneercurry'>Paneer Curry</h3>
+  <p class="item-price-paneercurry">Rs 200</p>
+  <!-- <p>Some text about the panda..</p> -->
+  <p><button id='button-paneercurry'>Add to Cart</button></p>
+</div>
+<div class="column">
+  <img src="{% static 'images/pasta.jpg' %}" alt="pasta"  style="width:200px;height:120px">
+  <h3 id='item-pasta'>Pasta</h3>
+  <p class="item-price-pasta">Rs 150</p>
+  <!-- <p>Some text about the panda..</p> -->
+  <p><button id='button-pasta'>Add to Cart</button></p>
+</div>
+<div class="column">
+  <img src="{% static 'images/pizza.jpg' %}" alt="pizza"  style="width:200px;height:120px">
+  <h3 id='item-pizza'>Pizza</h3>
+  <p class="item-price-pizza">Rs 200</p>
+  <!-- <p>Some text about the panda..</p> -->
+  <p><button id='button-pizza'>Add to Cart</button></p>
+</div>
+<div class="column">
+  <img src="{% static 'images/paneerpakodi.jpg' %}" alt="paneerpakodi"  style="width:200px;height:120px">
+  <h3 id='item-paneerpakodi'>Paneer pakodi</h3>
+  <p class="item-price-paneerpakodi">Rs 200</p>
+  <!-- <p>Some text about the panda..</p> -->
+  <p><button id='button-paneerpakodi'>Add to Cart</button></p>
+</div>
+<div class="column">
+  <img src="{% static 'images/chowmin.jpg' %}" alt="chowmin"  style="width:200px;height:120px">
+  <h3 id = 'item-chowmin'>Chowmin</h3>
+  <p class="item-price-chowmin">Rs 150</p>
+  <!-- <p>Some text about the panda..</p> -->
+  <p><button id='button-chowmin'>Add to Cart</button></p>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#button-chowmin").click(function(){
+  var item =  $("#item-chowmin").text();
+  var price = $(".item-price-chowmin").text();
+  // var count = $("#count").text();
+  $.ajax({
+         url: "/order-items",
+         type : "GET",
+         data: jQuery.param({ item: item, price : price}) ,
+         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+         success: function(count){
+         $("#total-item").text("Total Item in Cart : "+count);
+  }
+});
+});
+$("#button-paneerpakodi").click(function(){
+var item =  $("#item-paneerpakodi").text();
+var price = $(".item-price-paneerpakodi").text();
+// var count = $("#count").text();
+$.ajax({
+       url: "/order-items",
+       type : "GET",
+       data: jQuery.param({ item: item, price : price}) ,
+       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+       success: function(count){
+       $("#total-item").text("Total Item in Cart : "+count);
+}
+});
+});
+$("#button-paneercurry").click(function(){
+var item =  $("#item-paneercurry").text();
+var price = $(".item-price-paneercurry").text();
+// var count = $("#count").text();
+$.ajax({
+       url: "/order-items",
+       type : "GET",
+       data: jQuery.param({ item: item, price : price}) ,
+       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+       success: function(count){
+       $("#total-item").text("Total Item in Cart : "+count);
+}
+});
+});
+$("#button-paneertikka").click(function(){
+var item =  $("#item-paneertikka").text();
+var price = $(".item-price-paneertikka").text();
+// var count = $("#count").text();
+$.ajax({
+       url: "/order-items",
+       type : "GET",
+       data: jQuery.param({ item: item, price : price}) ,
+       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+       success: function(count){
+      $("#total-item").text("Total Item in Cart : "+count);
+}
+});
+});
+$("#button-pasta").click(function(){
+var item =  $("#item-pasta").text();
+var price = $(".item-price-pasta").text();
+// var count = $("#count").text();
+$.ajax({
+       url: "/order-items",
+       type : "GET",
+       data: jQuery.param({ item: item, price : price}) ,
+       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+       success: function(count){
+       $("#total-item").text("Total Item in Cart : "+count);
+}
+});
+});
+$("#button-chaat").click(function(){
+var item =  $("#item-chaat").text();
+var price = $(".item-price-chaat").text();
+// var count = $("#count").text();
+$.ajax({
+       url: "/order-items",
+       type : "GET",
+       data: jQuery.param({ item: item, price : price}) ,
+       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+       success: function(count){
+       $("#total-item").text("Total Item in Cart : "+count);
+}
+});
+});
+$("#button-spicychaat").click(function(){
+var item =  $("#item-spicychaat").text();
+var price = $(".item-price-spicychaat").text();
+// var count = $("#count").text();
+$.ajax({
+       url: "/order-items",
+       type : "GET",
+       data: jQuery.param({ item: item, price : price}) ,
+       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+       success: function(count){
+       $("#total-item").text("Total Item in Cart : "+count);
+}
+});
+});
+$("#button-pizza").click(function(){
+var item =  $("#item-pizza").text();
+var price = $(".item-price-pizza").text();
+// var count = $("#count").text();
+$.ajax({
+       url: "/order-items",
+       type : "GET",
+       data: jQuery.param({ item: item, price : price}) ,
+       contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+       success: function(count){
+       $("#total-item").text("Total Item in Cart : "+count);
+}
+});
+});
+});
+  </script>
+{% endblock %}

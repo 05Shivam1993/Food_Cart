@@ -1,0 +1,32 @@
+{% extends 'foodapp/index.html' %}
+{% load staticfiles %}
+{% block childblock %}
+<style>
+.container{
+  margin-top: 30px;
+}
+</style>
+<div class="container">
+<div class="jumbotron">
+<table>
+  <tr>
+    <th style="text-align:center;color:black">Coupan</th>
+    <th style="text-align:center;color:black">Discount Percent</th>
+    <th style="text-align:center;color:black">Applicable above cost</th>
+  </tr>
+  {% for offers in offers %}
+  <tr>
+    <td style="text-align:center;color:black">{{offers.coupan}}</td>
+    <td style="text-align:center;color:black">{{offers.discount}}</td>
+    <td style="text-align:center;color:black">{{offers.applicable}}</td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+</div>
+<footer>
+<div class='footer'>
+  <p>&copy; {{request.session.year}} Developed by: Shivam Srivastava</p>
+  <p>Contact information: <a href="mailto:shivam.hbti05@gmail.com">shivam.hbti05@gmail.com</a></p>
+</footer>
+{% endblock %}

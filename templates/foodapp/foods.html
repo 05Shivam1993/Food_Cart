@@ -1,0 +1,121 @@
+{% extends 'foodapp/index.html' %}
+{% load staticfiles %}
+{% block childblock %}
+<head>
+<style>
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.price {
+  color: grey;
+  font-size: 18px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+</style>
+</head>
+<center>
+  {% if request.session.count %}
+  <center><h4 id='total-item' style="color:red;font-style:italic">Total Item in Cart : {{request.session.count}}
+  </h4>
+  <a href="/cart-items" ><button  class='btn btn-success'>Go to Cart</button></a>
+  </center>
+  {% else %}
+  <center><h4 id='total-item' style="color:red;font-style:italic">Total Item in Cart : 0
+  </h4>
+  <a href="/cart-items" ><button  class='btn btn-success'>Go to Cart</button></a>
+  </center>
+  {% endif %}
+  <h1>Please Select your food items</h1><hr>
+
+<form method="post">
+  <label for="veg">Veg Section: </label>
+  <select name="veg" id="veg">
+    <option value="select">Select</option>
+    <option value="pulses">Pulses</option>
+    <option value="vegetables">Vegetables</option>
+    <option value="paneer">Paneer</option>
+    <option value="roti">Roti</option>
+    <option value="naan">Naan</option>
+    <option value="rice">Rice</option>
+  </select>
+  <label for="nonVeg">NonVeg Section: </label>
+  <select name="nonVeg" id="nonVeg">
+    <option value="select">Select</option>
+    <option value="chicken">Chicken</option>
+    <option value="mutton">Mutton</option>
+    <option value="fish">Fish</option>
+  </select>
+  <label for="sweets">Sweets Section: </label>
+  <select name="sweets" id="sweets">
+    <option value="select">Select</option>
+    <option value="barfi">Kaju Barfi</option>
+    <option value="rasmalai">Rasmalai</option>
+    <option value="gulabjamun">Gulab Jamun</option>
+    <option value="rasgulla">Rasgulla</option>
+    <option value="motichur">Motichur Laddo</option>
+    <option value="laddo">Besan laddo</option>
+    <option value="lassi">Lassi</option>
+  </select>
+  {% csrf_token %}
+  <input type="submit" class="btn btn-primary btn-sm" value="Submit">
+</form>
+<br>
+
+{% if item %}
+{% for product in item %}
+            <div class="row">
+              {% for i in product %}
+                  <div class="col-6 col-md-4 shadow-lg p-3 mb-5 bg-white rounded">
+                      <img src="/media/{{i.image}}" alt="" style="height:200px;width:250px;">
+                      <h2 id='item'>{{i.item}}</h2>
+                      <h3 id="price">Rs {{i.price}}</h3>
+                      <a class="btn btn-primary addToCart">Add to Cart</a>
+                      <br><br>
+                  </div>
+              {% endfor %}
+            </div>
+{% endfor %}
+{% endif %}
+
+</center>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $('.addToCart').each(function(i,elem){
+    $(elem).click(function(){
+      let fooditem = $(elem).prev().prev().text();
+      let foodprice = $(elem).prev().text();
+      $.ajax({
+             url: "/order-items",
+             type : "GET",
+             data: jQuery.param({ item: fooditem, price : foodprice}) ,
+             contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+             success: function(count){
+             $("#total-item").text("Total Item in Cart : "+count);
+      }
+    });
+  });
+});
+});
+</script>
+{% endblock %}

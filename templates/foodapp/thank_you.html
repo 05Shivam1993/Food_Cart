@@ -1,0 +1,24 @@
+{% extends 'foodapp/index.html' %}
+{% block childblock %}
+{% load staticfiles %}
+<head>
+<style>
+#mail_gif{
+  margin:auto;
+  margin-top: 50px;
+}
+
+h1{
+  margin-top: 50px;
+  text-align: center;
+  color: #46eb34;
+}
+
+</style>
+</head>
+<body style="background:white;">
+  <h1><u>Mail Sent Successfully</u></h1>
+<div id='mail_gif'>
+  <center><img src="{% static 'images/send_mail.gif' %}"/></center>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'foodapp/index.html' %}
+{% load staticfiles %}
+{% block childblock %}
+{% if request.session.basket %}
+{% if total_cost %}
+<h2 class='pro_details'>Total Cost : {{total_cost}}</h2>
+{% endif %}
+
+<table>
+  <tr>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Delete</th>
+  </tr>
+  {% for key,val in request.session.basket.items %}
+  <tr>
+    <td>{{val.item}}</td>
+    <td>{{val.price}}</td>
+    <td>1</td>
+    <td><a href="/delete-item?item={{key}}"><button class='btn btn-sm btn-danger'>Delete</button></a></td>
+  </tr>
+  {% endfor %}
+</table>
+<br>
+<center><form method="post" action='/cart-items'>
+  Apply coupan for Discount : <input type="text" name='coupan'>
+  {% csrf_token %}
+   <button class='btn btn-success'>Apply</button>
+  <form></center>
+    <br>
+  <center><a href="/checkout-form" class='btn btn-success'>Checkout</a></center>
+{% else %}
+<h3 id='empty-cart'>Oops !! Your cart is Empty</h3>
+{% endif %}
+<footer>
+<div class='footer'>
+  <p>&copy; {{request.session.year}} Developed by: Shivam Srivastava</p>
+  <p>Contact information: <a href="mailto:shivam.hbti05@gmail.com">shivam.hbti05@gmail.com</a></p>
+</footer>
+{% endblock %}

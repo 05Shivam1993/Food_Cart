@@ -1,0 +1,31 @@
+{% extends 'foodapp/index.html' %}
+{% load staticfiles %}
+{% block childblock %}
+{% if order_list %}
+<h3 class='pro_details'>My Order List</h3>
+<table>
+  <tr>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Cancel Order</th>
+  </tr>
+{% for item in order_list %}
+  <tr>
+    <td>{{item.dish_name}}</td>
+    <td>{{item.cost}}</td>
+    <td>1</td>
+    <td><a href="{% url 'cancel_order' item.id %}"><button class='btn btn-sm btn-danger'>cancel_order</button></a></td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+<br /><br />
+<h3 id='empty-cart'>Oops !! Your cart is Empty</h3>
+{% endif %}
+<footer>
+<div class='footer'>
+  <p>&copy; {{request.session.year}} Developed by: Shivam Srivastava</p>
+  <p>Contact information: <a href="mailto:shivam.hbti05@gmail.com">shivam.hbti05@gmail.com</a></p>
+</footer>
+{% endblock %}

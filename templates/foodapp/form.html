@@ -1,0 +1,26 @@
+
+  <div class='container-fluid'>
+  <div class="form-row">
+     <div class="form-group col-md-6 mb-0">
+       <form method='post'>
+         <center>
+           <h1>Please fill the details</h1><hr>
+         <table>
+       {% for field in form %}
+         <tr>
+           <th>{{field.label_tag}}</th>
+           <td>
+             {{ field.errors }}
+             {{ field }}
+           </td>
+         </tr>
+       {% endfor %}
+     </table>
+   <br>
+     {% csrf_token %}
+   <button style='background-color:orange; color:white; height:40px; width:100px; margin-left:70px;'>Place Order</button
+     </center>
+       </form>
+     </div>
+   </div>
+ </div>

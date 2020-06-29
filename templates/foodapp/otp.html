@@ -1,0 +1,11 @@
+<html>
+<body>
+<center><h1>Enter the otp sent on your email</h1>
+<form method='post' action='/otp_for_resetPassword'>
+  <label for="otp">Enter OTP:</label>
+  <input type="text" id="otp" name="otp" minlength="4"><br><br>
+  {% csrf_token %}
+  <button style='background-color:orange; color:white; margin-left: 80px; height:40px; width:100px;'>Submit</button><br><br>
+</form></center>
+</body>
+</html>

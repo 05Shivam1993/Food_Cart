@@ -1,0 +1,57 @@
+{% extends 'foodapp/index.html' %}
+{% block childblock %}
+ <head>
+   <title>Login Form</title>
+   <style>
+    .container{
+      align-items: center;
+      margin-top: 70px;
+    }
+    .button{
+      margin-left:70px;
+    }
+    .jumbotron{
+      background-image: linear-gradient(to bottom right, white,orange);
+      margin-left: 300px;
+      margin-right: 300px;
+    }
+   </style>
+ </head>
+<div class="container">
+  <div class="jumbotron">
+ <form class="form-inline" method="post">
+ <div class="form-group">
+   <label for="username">Username:</label>
+   <input type="text" class="form-control" name="username" id="username">
+ </div>
+ <br><br>
+ <div class="form-group">
+   <label for="password">Password:</label>
+   <input type="password" class="form-control" id="password" name="password">
+ </div>
+ <br><br>
+ {% csrf_token %}
+ <button type="submit" class="btn btn-primary button">Submit</button>
+ <br><br>
+  <a href='/reset_password' style='margin-left: 80px; height:40px; width:100px;color:white'>Forgot Password</a>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
+<!-- <center><h1><u>Please login first to avail the service</u></h1></center>
+ <form method='post'>
+   <center>
+     <table>
+   {% for field in form %}
+     <tr>
+       <th>{{field.label_tag}}</th>
+       <td>
+         {{ field.errors }}
+         {{ field }}
+       </td>
+     </tr>
+   {% endfor %}
+ </table><br>
+ {% csrf_token %} -->
+ <!-- <button style='background-color:orange; color:white; margin-left: 80px; height:40px; width:100px;'>Submit</button><br><br> -->

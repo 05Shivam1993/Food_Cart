@@ -1,0 +1,32 @@
+{% extends 'foodapp/index.html' %}
+{% load staticfiles %}
+{% block childblock %}
+<style>
+.jumbotron{
+  background-image: linear-gradient(to bottom right, white,red);
+}
+h3{
+  color: white;
+}
+.container{
+  margin-top: 20px;
+}
+</style>
+</head>
+<div class="container">
+<div class="jumbotron">
+  <h1>About FoodPanda</h1>
+  <hr>
+  <p>Life without Taste is what Song without Music !</p>
+  <p>So, Here we comes ! Don't wait to grab your next delicious meal !</p>
+  <p>We, At FoodPanda provides you the food which is hygienic as well as energetic.</p>
+  <p>We measure all the safety checks to ensure that quality is on their best at Market.</p>
+  <h3>So, Baithe kyu ho Khali ? Order kro na Thali ! </h3>
+</div>
+</div>
+<footer>
+<div class='footer'>
+  <p>&copy; {{request.session.year}} Developed by: Shivam Srivastava</p>
+  <p>Contact information: <a href="mailto:shivam.hbti05@gmail.com">shivam.hbti05@gmail.com</a></p>
+</footer>
+{% endblock %}
